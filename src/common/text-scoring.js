@@ -8,7 +8,7 @@ exports.simple = function(textToScore, table) {
 		var code = textToScore.charCodeAt(i);
 
 		// beyond scope
-		if (32 > code || 126 < code) {
+		if (10 != code && 13 != code && (32 > code || 126 < code)) {
 			return 0;
 		} else {
 			symbol = String.fromCharCode(code).toLowerCase();
