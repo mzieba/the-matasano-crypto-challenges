@@ -12,90 +12,12 @@
  */
 
 
-var hexToStr = function(hexString) {
-	var result = [];
-	hexString.match(/.{2}/g).forEach(function(pair) {
-		result.push(String.fromCharCode(parseInt(pair, 16)));
-	});
-	return result.join('');
-};
-
-var strToHex = function(string) {
-	var result = [];
-	string.match(/.{1}/g).forEach(function(symbol) {
-		result.push(
-			symbol.charCodeAt(0).toString(16)
-		);
-	});
-	return result.join('');
-};
-
-
-var xorTextAgainst = function(text, xor) {
-	// same sizes
-	while (xor.length < text.length) {
-		xor += xor;
-	}
-	xor = xor.substr(0, text.length);
-
-	var result = [];
-
-	for (var i=0; i<text.length; ++i) {
-		result.push(
-			String.fromCharCode(
-				text.charCodeAt(i) ^ xor.charCodeAt(i)
-			)
-		);
-	}
-
-	return result.join('');
-};
-
-var xorHexTextAgainst = function(text, xor) {
-	// same sizes
-	while (xor.length < text.length) {
-		xor += xor;
-	}
-	xor = xor.substr(0, text.length);
-
-	var result = [],
-		xorPairs = xor.match(/.{2}/g);
-
-	text.match(/.{2}/g).forEach(function(pair, i) {
-		result.push(
-			String.fromCharCode(
-				parseInt(pair, 16) ^ parseInt(xorPairs[i], 16)
-			)
-		);
-	});
-
-	return result.join('');
-};
-
-var simpleScore = function(textToScore, table) {
-	var score = 0,
-		code = 0,
-		symbol = '';
-
-	for (var i=0; i<textToScore.length; ++i) {
-		var code = textToScore.charCodeAt(i);
-
-		// beyond scope
-		if (32 > code || 126 < code) {
-			return 0;
-		} else {
-			symbol = String.fromCharCode(code).toLowerCase();
-			score += ('number' === typeof table[symbol])
-				? table[symbol]
-				: -1;
-		}
-	}
-
-	return score;
-};
+var textScoring = require('../common/text-scoring.js'),
+	xorTools = require('../common/xor-tools.js');
 
 
 var INPUT = '1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736',
+	OUTPUT = '',
 	englishLettersByPopularity = {
 		' ': 1,
 		a: 8.167,
@@ -125,28 +47,23 @@ var INPUT = '1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b373
 		y: 1.974,
 		z: 0.074,
 	},
-	results = {},
-	scores = {},
-	symbol;
+	results = [];
 
 for (var i=32; i<128; ++i) {
-	symbol = String.fromCharCode(i);
-	scores[symbol] = simpleScore(
-		results[symbol] = xorHexTextAgainst(INPUT, i.toString(16)),
-		englishLettersByPopularity
-	);
+	var symbol = String.fromCharCode(i),
+		message = xorTools.xorHexTextAgainst(INPUT, i.toString(16));
+
+	results.push({
+		symbol: symbol,
+		message: message,
+		score: textScoring.simple(message, englishLettersByPopularity)
+	});
 }
 
-var keys = [];
-for (var key in scores) {
-	keys.push(key);
-}
-keys.sort(function(a, b) {
-	return scores[b] - scores[a];
+results.sort(function(a, b) {
+	return b['score'] - a['score'];
 });
 
-console.log(
-	keys[0],
-	scores[keys[0]],
-	results[keys[0]]
-);
+OUTPUT = results[0];
+
+console.log(OUTPUT);
