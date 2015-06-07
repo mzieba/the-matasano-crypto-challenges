@@ -2,7 +2,8 @@
 exports.simple = function(textToScore, table) {
 	var score = 0,
 		code = 0,
-		symbol = '';
+		symbol = '',
+		isLower = false;
 
 	for (var i=0; i<textToScore.length; ++i) {
 		var code = textToScore.charCodeAt(i);
@@ -12,8 +13,11 @@ exports.simple = function(textToScore, table) {
 			return 0;
 		} else {
 			symbol = String.fromCharCode(code).toLowerCase();
+			isLower = String.fromCharCode(code) === symbol;
+
+			// additional 20% of score if letter is a lower case
 			score += ('number' === typeof table[symbol])
-				? table[symbol]
+				? table[symbol] + isLower * (table[symbol] / 5)
 				: -1;
 		}
 	}
