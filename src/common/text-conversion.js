@@ -9,10 +9,12 @@ exports.hexToStr = function(hexString) {
 
 exports.strToHex = function(string) {
 	var result = [];
-	string.match(/.{1}/g).forEach(function(symbol) {
+
+	for (var i=0; i<string.length; ++i) {
 		result.push(
-			symbol.charCodeAt(0).toString(16)
+			('0' + string.charCodeAt(i).toString(16)).substr(-2, 2)
 		);
-	});
+	}
+
 	return result.join('');
 };
