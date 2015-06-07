@@ -27,10 +27,50 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 400.0,
-		"last_filter": "git: s",
+		"height": 296.0,
+		"last_filter": "commit",
 		"selected_items":
 		[
+			[
+				"commit",
+				"Git: Commit Selected Hunk"
+			],
+			[
+				"git:sta",
+				"Git: Status"
+			],
+			[
+				"status",
+				"Git: Status"
+			],
+			[
+				"git:ignore",
+				"Git: Update Project Ignored Files"
+			],
+			[
+				"add",
+				"Git: Add..."
+			],
+			[
+				"git:com",
+				"Git: Commit Selected Hunk"
+			],
+			[
+				"git: st",
+				"Git: Status"
+			],
+			[
+				"git: amn",
+				"GitGutter: Compare Against HEAD"
+			],
+			[
+				"git: com",
+				"Git: Amend Commit"
+			],
+			[
+				"git: add",
+				"Git: Add Current File"
+			],
 			[
 				"git: s",
 				"Git: Status"
@@ -48,7 +88,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 424.0
+		"width": 520.0
 	},
 	"console":
 	{
@@ -70,11 +110,19 @@
 	},
 	"expanded_folders":
 	[
-		"/C/dev/www/nodejs/the-matasano-crypto-challenges"
+		"/C/dev/www/nodejs/the-matasano-crypto-challenges",
+		"/C/dev/www/nodejs/the-matasano-crypto-challenges/src",
+		"/C/dev/www/nodejs/the-matasano-crypto-challenges/src/common",
+		"/C/dev/www/nodejs/the-matasano-crypto-challenges/src/set01"
 	],
 	"file_history":
 	[
+		"/C/dev/www/nodejs/the-matasano-crypto-challenges/README.md",
+		"/C/dev/www/nodejs/the-matasano-crypto-challenges/src/common/xor-tools.js",
 		"/C/dev/www/nodejs/the-matasano-crypto-challenges/.gitignore",
+		"/C/dev/www/nodejs/the-matasano-crypto-challenges/project.sublime-project",
+		"/C/dev/www/nodejs/the-matasano-crypto-challenges/src/common/text-scoring.js",
+		"/C/dev/www/nodejs/the-matasano-crypto-challenges/COMMIT_EDITMSG.COMMIT_EDITMSG",
 		"/C/dev/www/nodejs/the-matasano-crypto-challenges/src/set01/challenge05.js",
 		"/C/dev/www/nodejs/the-matasano-crypto-challenges/src/set01/challenge01.js",
 		"/C/dev/www/nodejs/the-matasano-crypto-challenges/src/set01/challenge02.js",
@@ -196,11 +244,7 @@
 		"/C/Users/michalzieba/Documents/AutoHotkey.ahk",
 		"/C/Users/michalzieba/Dropbox/private/ia",
 		"/C/dev/vagrant/scotch-box/Vagrantfile",
-		"/C/Program Files (x86)/JetBrains/PhpStorm 8.0.3/bin/idea.properties",
-		"/C/Program Files (x86)/JetBrains/PhpStorm 8.0.3/bin/PhpStorm.exe.vmoptions",
-		"/C/Users/Michał/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
-		"/C/Users/Michał/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
-		"/C/Users/Michał/AppData/Roaming/Sublime Text 3/Installed Packages/Theme - Afterglow.sublime-package"
+		"/C/Program Files (x86)/JetBrains/PhpStorm 8.0.3/bin/idea.properties"
 	],
 	"find":
 	{
@@ -303,7 +347,7 @@
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 31.0
 	},
 	"layout":
 	{
@@ -331,6 +375,10 @@
 	"output.find_results":
 	{
 		"height": 0.0
+	},
+	"output.git":
+	{
+		"height": 98.0
 	},
 	"pinned_build_system": "",
 	"project": "project.sublime-project",
@@ -374,7 +422,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 250.0,
+	"side_bar_width": 244.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
