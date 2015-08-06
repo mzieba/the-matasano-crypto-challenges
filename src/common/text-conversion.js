@@ -41,3 +41,11 @@ exports.binToStr = function (binary) {
 
     return result.join('');
 };
+
+exports.base64encode = function (string) {
+    return new Buffer(string).toString('base64');
+};
+
+exports.base64decode = function (string64) {
+    return new Buffer(string64, 'base64').toString('ascii');
+};
